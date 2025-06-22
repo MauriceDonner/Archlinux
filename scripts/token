@@ -1,14 +1,1 @@
-#!/bin/bash
-
-token=$(cat /usr/share/github/token)
-
-# Simulate keypresses (needs `wtype`)
-wtype $token
-wtype -k return
-
-sleep 0.5
-
-wtype $token
-wtype -k return
-
-
+/opt/token
