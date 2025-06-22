@@ -1,0 +1,31 @@
+#!/bin/bash
+
+IMAGE=/tmp/waylandlock.png
+SCREENSHOT="grim /tmp/screen.png"
+LOCK=/home/marble/Pictures/lock.png
+SHADOW=/home/marble/Pictures/Shadow.png
+SHADOWTMP=/tmp/shadow.png
+
+$SCREENSHOT
+X=$(identify -format '%[fx:w]' $IMAGE)
+Y=$(identify -format '%[fx:h]' $IMAGE)
+
+time ffmpeg -y -i /tmp/screen.png -vf 'gblur=sigma=7' $IMAGE
+
+# Overlay a Shadow on your Screenshot
+if [[ $X == 1920 && $Y == 1080 ]]; then
+	SHADOWTMP=/home/marble/Pictures/Shadow1920.png
+	echo 'hi'
+elif [[ $X == 1366 && $Y == 768 ]]; then
+	SHADOWTMP=/home/marble/Pictures/Shadow1366.png
+else
+	time magick convert $SHADOW -resize "$X x $Y!" $SHADOWTMP
+fi
+
+# Combine shadow, lock and blurred image together
+time composite -gravity center $SHADOWTMP $IMAGE $IMAGE
+time composite -gravity center $LOCK $IMAGE $IMAGE
+
+swaylock -i $IMAGE
+
+rm /tmp/screen.png $SHADOWTMP $IMAGE

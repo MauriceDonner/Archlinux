@@ -1,0 +1,50 @@
+shell mkdir Trash
+shell rmdirr %s
+rename python3.7
+shell rm -rf %s
+open_with vim
+shell mkdir David
+shell rmdir %s
+search opt
+search java
+shell sudo mkdir java
+shell sudo tar -xvf /home/maurice/Downloads/jre-8u261
+shell chmod 777 %s
+search tex
+shell scconf
+shell sudo rm %s
+search share
+search doc
+search README
+search read
+open_with 
+search networ
+search net
+shell sudo vim %s
+search wpa
+search /etc
+search etc
+search netw
+search run
+search network
+search modpro
+search X11
+search passw
+search bash
+shell mkdir alacritty
+shell nvim alacritty.toml
+shell nvim %s
+shell mkdir Programs
+shell rm %s
+rename .bash_profile
+q
+shell mkdir Music
+shell unzip %s
+search bashr
+shell sudo mkdir github
+search githu b
+shell sudo nvim token
+shell sudo touch token
+open_with nvim
+shell sudo mv %s github
+search github
